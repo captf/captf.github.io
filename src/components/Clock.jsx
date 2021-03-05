@@ -1,4 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react'
+
+import './components.css'
 
 const Clock = () => {
     const TICK = 1000;
@@ -18,9 +20,9 @@ const Clock = () => {
 
 
     return (
-        <>
+        <div className="clock">
             {`${formatNumber(date.getHours())}:${formatNumber(date.getMinutes())}:${formatNumber(date.getSeconds())}`}
-        </>
+        </div>
     );
 };
 
