@@ -1,6 +1,6 @@
 {
   "name": "overlays",
-  "homepage": "https://captf.github.io/streaming",
+  "homepage": "https://captf.github.io/overlays",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
