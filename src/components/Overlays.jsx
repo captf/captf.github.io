@@ -1,6 +1,6 @@
 import React from 'react';
 import Clock from "./Clock";
-import Timer from './Timer'
+import Countdown from './Countdown'
 import {Link} from "react-router-dom";
 
 const Overlays = ({match}) => {
@@ -24,7 +24,7 @@ const Overlays = ({match}) => {
                 break;
             case 'timer':
 				const {time} = match.params
-                toShow = <Timer time={time} />
+                toShow = <Countdown time={time} />
 				break;
             default:
                 break;
