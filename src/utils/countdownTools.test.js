@@ -67,16 +67,20 @@ describe('formatNumber formats as expected', () => {
 
 describe('textToShow gives the expected text', () => {
     it('gives the time when under 30 minutes', () => {
-        expect(textToShow({mins: 12, secs: 34})).toBe('12:34')
+        const actual = textToShow({mins: 12, secs: 34});
+        expect(actual.text).toBe('12:34')
     })
     it('gives the 00:00 at zero time', () => {
-        expect(textToShow({mins: 0, secs: 0})).toBe('00:00')
+        const actual = textToShow({mins: 0, secs: 0});
+        expect(actual.text).toBe('00:00')
     })
 
     it('gives "incoming" when over 55 minutes', () => {
-        expect(textToShow({mins: 56, secs: 4})).toBe('Incoming!')
+        const actual = textToShow({mins: 56, secs: 4});
+        expect(actual.text).toBe('Incoming!')
     })
     it('gives "Lost track of time..." when over 40 minutes', () => {
-        expect(textToShow({mins: 43, secs: 45})).toBe('Lost track of time...')
+        const actual = textToShow({mins: 43, secs: 45});
+        expect(actual.text).toBe('Lost track of time...')
     })
 })

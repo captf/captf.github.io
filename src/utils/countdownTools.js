@@ -16,17 +16,30 @@ export const secondsToMins = secs => {
 }
 
 export const textToShow = ({mins, secs}) => {
-    let text
-    if (mins < 30) {
-        text = `${formatNumber(mins)}:${formatNumber(secs)}`
-    } else if (mins < 55) {
-        text = 'Lost track of time...'
-    } else {
-        text = 'Incoming!'
+    const obj = {
+        text: '',
+        state: null
     }
 
-    return text
+    if (mins < 30) {
+        obj.text = `${formatNumber(mins)}:${formatNumber(secs)}`
+        obj.state = MessageState.COUNTING
+    } else if (mins < 55) {
+        obj.text = 'Lost track of time...'
+        obj.state = MessageState.EXCESS
+    } else {
+        obj.text = 'Incoming!'
+        obj.state = MessageState.REACHED
+    }
 
+    return obj
+
+}
+
+export const MessageState = {
+    COUNTING: 'counting',
+    REACHED: 'reached',
+    EXCESS: 'excess'
 }
 
 export const formatNumber = (digits) => {

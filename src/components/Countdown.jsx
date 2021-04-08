@@ -33,8 +33,8 @@ const Countdown = ({minute= 0}) => {
 	let content = textToShow(cd)
 	return (
 		<div className="countdown">
-			<div className="counter">
-				{content}
+			<div className={`counter ${content.state}`}>
+				{content.text}
 			</div>
 		</div>
 	)
