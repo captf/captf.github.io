@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
-import './components.css'
+import './components.scss'
 import {useMeasure} from "react-use";
 
 const Clock = () => {

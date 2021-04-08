@@ -13,6 +13,10 @@
     "react-scripts": "4.0.3",
     "react-use": "^17.2.1",
     "react-use-websocket": "^2.5.0",
+    "sass": "^1.32.8",
+    "twitch": "^4.5.2",
+    "twitch-auth": "^4.5.2",
+    "twitch-chat-client": "^4.5.2",
     "typescript": "^3.7.2",
     "web-vitals": "^1.0.1"
   },
@@ -21,7 +25,8 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^3.1.0",
+    "mockdate": "^3.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

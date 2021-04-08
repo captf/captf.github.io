@@ -1,0 +1,57 @@
+Tags: https://dev.twitch.tv/docs/irc/tags
+@badge-info=;badges=;client-nonce=18e3985936391436896f227871bcbecb;color=#8A2BE2;display-name=psyfarrell;emotes=;flags=;id=b16b71b5-a98c-4b09-b872-10854dd98e5b;mod=0;room-id=587496807;subscriber=0;tmi-sent-ts=1615854387224;turbo=0;user-id=46006020;user-type= :psyfarrell!psyfarrell@psyfarrell.tmi.twitch.tv PRIVMSG #nocaptf :tags
+
+@badge-info=;
+badges=broadcaster/1,
+premium/1;
+client-nonce=c08c6d1292d7ff4f782ed50ffeab91f6;
+color=;
+display-name=nocaptf;
+emotes=;
+flags=;
+id=63b694dc-c5f6-41b3-822b-14a9060a6193;
+mod=0;
+room-id=587496807;
+subscriber=0;
+tmi-sent-ts=1615854439881; -- timestamp (epoch)
+turbo=0;
+user-id=587496807;
+user-type=
+:nocaptf!nocaptf@nocaptf.tmi.twitch.tv PRIVMSG #nocaptf :
+my tags
+
+
+https://dev.twitch.tv/docs/v5/reference/chat/#get-chat-emoticons-by-set:
+curl -H 'Accept: application/vnd.twitchtv.v5+json' \
+-H 'Client-ID: uo6dggojyb8d6soh92zknwmi5ej1q2' \ <- cid from config.js
+-X GET 'https://api.twitch.tv/kraken/chat/emoticon_images?emotesets=19151'
+Then
+get them all, and cache: https://dev.twitch.tv/docs/v5/reference/chat/#get-all-chat-emoticons
+
+const messageEvent = {
+    timestamp: '1201.8450000323355',
+    // about 23:50 14/03/2021 I think this is actually milliseconds since connection
+    type: 'message',
+    /*
+    :tmi.twitch.tv 001 nocaptf :Welcome, GLHF!
+↵:tmi.twitch.tv 002 nocaptf :Your host is tmi.twitch.tv
+↵:tmi.twitch.tv 003 nocaptf :This server is rather new
+↵:tmi.twitch.tv 004 nocaptf :-
+↵:tmi.twitch.tv 375 nocaptf :-
+↵:tmi.twitch.tv 372 nocaptf :You are in a maze of twisty passages, all alike.
+↵:tmi.twitch.tv 376 nocaptf :>
+
+
+:nocaptf!nocaptf@nocaptf.tmi.twitch.tv JOIN #nocaptf
+↵:nocaptf.tmi.twitch.tv 353 nocaptf = #nocaptf :nocaptf
+↵:nocaptf.tmi.twitch.tv 366 nocaptf #nocaptf :End of /NAMES list
+
+     */
+    data: ':nocaptf!nocaptf@nocaptf.tmi.twitch.tv PRIVMSG #nocaptf :text'
+    // :nocaptf!nocaptf@nocaptf.tmi.twitch.tv PRIVMSG #nocaptf :ACTION dances" SOH??
+}
+
+
+////////////////////
+
+

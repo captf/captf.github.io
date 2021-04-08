@@ -13,7 +13,7 @@
 /out
 
 # misc
-.env
+.env.local
 .env.test
 .yarn-integrity
 .eslintcache

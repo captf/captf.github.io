@@ -16,7 +16,7 @@ const App = () => {
     const routeResult = useRoutes(routes)
 
     return (
-        <div className="captf-github ui container">
+        <div className="captf-github container">
             {routeResult || 'Nothing Yet'}
         </div>
     )
