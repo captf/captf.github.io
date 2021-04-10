@@ -24,3 +24,55 @@
     margin: 2px auto;
   }
 }
+
+.twitch-chat {
+  font-size: 14px;
+
+  .chat-header {
+    font-size: 20px;
+  }
+
+  .chat-box {
+    margin: 15px;
+    width: 400px;
+    height: 600px;
+    overflow: hidden;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    display:table-cell;
+    vertical-align: bottom;
+  }
+
+  .chat-message {
+    position: relative;
+    display: block;
+  }
+
+  .message-content {
+
+  }
+
+  span {
+    margin: 2px;
+  }
+
+  .chat-time {
+    margin: 2px;
+    color: rgb(200, 200, 200);
+  }
+
+  .chat-user {
+    font-weight: bold;
+  }
+  .chat-message {
+    color: rgb(178, 0, 0);
+  }
+
+  .chat-emote {
+    height: 24px;
+    vertical-align: middle;
+  }
+
+
+}

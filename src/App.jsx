@@ -4,6 +4,7 @@ import Clock from './components/Clock'
 import Countdown from './components/Countdown'
 import {useRoutes} from "hookrouter";
 import Chat from "./components/Chat";
+import {ChatHandler} from "./context/ChatHandler";
 
 const routes = {
     '/': () => <IndexPage />,
@@ -16,9 +17,11 @@ const App = () => {
     const routeResult = useRoutes(routes)
 
     return (
-        <div className="captf-github container">
-            {routeResult || 'Nothing Yet'}
-        </div>
+        <ChatHandler>
+            <div className="captf-github container">
+                {routeResult || 'Nothing Yet'}
+            </div>
+        </ChatHandler>
     )
 }
 

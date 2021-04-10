@@ -1,37 +1,29 @@
-import React, {useEffect, useRef} from 'react';
-import {ChatClient} from 'twitch-chat-client';
-import {ApiClient} from "twitch";
-import {authProvider} from "../config/TwitchAuthProvider";
-import {config} from "../config/config";
+import React, {useContext, useEffect, useState} from 'react';
+import ChatHandler from "../context/ChatHandler";
+
+import './components.scss'
 
 const Chat = () => {
-    const chatClient = useRef({})
-    const apiClient = useRef({})
-    const messages = useRef([])
+    const {messages, parseMessage} = useContext(ChatHandler)
+    const [parsed, setParsed] = useState([])
 
     useEffect(() => {
-        if (!chatClient.current?.isConnected) {
-            const used = create(chatClient, apiClient)
-            return () => {used.chatRef.current?.quit()}
-        }
-    },[])
+        setParsed([...messages])
+    },[messages])
 
     return (
-        <div>
-            Chat Test
-            {messages.current.map((m, i) => <div key={i}>{m}</div>)}
+        <div className="twitch-chat">
+            <div className="chat-header">Stream Chat</div>
+            <div className="chat-box">
+                {parsed?.map((m) => (
+                        <div key={m.id} className="chat-item">
+                            {parseMessage(m)}
+                        </div>
+                    )
+                )}
+            </div>
         </div>
     )
 }
 
 export default Chat;
-
-const create = async (chatRef, apiRef) => {
-    // move these to state
-    chatRef.current = new ChatClient(authProvider, {channels: config.channels});
-    apiRef.current = new ApiClient({authProvider});
-// listen to more events...
-    await chatRef.current.connect();
-
-    return {chatRef, apiRef}
-}
