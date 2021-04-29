@@ -9,22 +9,35 @@ const basicOptions = {
     readOnly: true
 }
 
-export const createChat = async (addMessage, eventStore) => {
+export const createChat = async ({onMessage, onJoin, onPart, onDelete}, eventStore = {}) => {
     const chatClient = new ChatClient(authProvider, basicOptions);
     const apiClient = new ApiClient({authProvider});
 
     await chatClient.connect();
 
     chatClient.onMessage((channel, user, message, msg) => {
-        addMessage(msg)
+        onMessage(msg)
     })
 
     chatClient.onMessageRemove((channel, messageId) => {
-
+        onDelete(channel, messageId)
     })
 
+    chatClient.onJoin((channel, user) => {
+        onJoin({channel, user})
+    })
+
+    chatClient.onPart((channel, user) => {
+        onPart({channel, user})
+    })
+
+    const ignoredMessages = ['PING', 'PONG', 'USERSTATE', 'ROOMSTATE', 'GLOBALUSERSTATE',
+        '353', '366', '375', '372', '376', '001', '002', '003', '004', 'JOIN', 'PART', 'CAP']
+
     chatClient.onAnyMessage((msg => {
-        //console.log(msg)
+        if (!ignoredMessages.includes(msg.command)) {
+            console.log(msg)
+        }
     }))
 
     return {chatClient: chatClient, apiClient: apiClient}
